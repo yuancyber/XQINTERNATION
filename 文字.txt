@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XQ PERFORMANCE | 原廠強化・高階性能與外觀改裝</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E50914',
+                            dark: '#0B0C10',
+                            card: '#14161D',
+                            border: '#232732',
+                            muted: '#8E95A5',
+                            line: '#06C755'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
+                        display: ['Oswald', '"Noto Sans TC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Carbon Fiber Background Texture */
+        .bg-carbon {
+            background-color: #0B0C10;
+            background-image: radial-gradient(#1b1f2a 15%, transparent 16%), radial-gradient(#1b1f2a 15%, transparent 16%);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+        }
+        .neon-glow-red {
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.45);
+        }
+        .neon-glow-line {
+            box-shadow: 0 4px 20px rgba(6, 199, 85, 0.4);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0B0C10; }
+        ::-webkit-scrollbar-thumb { background: #232732; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E50914; }
+    </style>
+</head>
+<body class="bg-[#0B0C10] text-gray-100 font-sans antialiased selection:bg-brand-red selection:text-white overflow-x-hidden">
+
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#0B0C10]/95 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Official Brand Logo (Exact Geometric Inverted Triangle XQ + Bold Wide Italic Wordmark + Click-to-Upload Exact File) -->
+            <div class="relative flex items-center group">
+                <input type="file" id="logoUploadInput" accept="image/*" class="hidden" onchange="handleCustomLogoUpload(event)">
+                <button type="button" onclick="document.getElementById('logoUploadInput').click()" title="點擊可直接上傳您的原始 LOGO 圖檔" class="flex items-center gap-3 text-left focus:outline-none">
+                    <!-- Custom Uploaded Logo Container -->
+                    <div id="customLogoWrapper" class="hidden items-center">
+                        <img id="customLogoImg" src="" alt="XQ PERFORMANCE" class="h-12 w-auto object-contain mix-blend-lighten">
+                    </div>
+
+                    <!-- Default Precision Vector Brand Logo -->
+                    <div id="defaultVectorLogo" class="flex flex-col items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        <svg class="w-10 h-9 mb-1" viewBox="0 0 120 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Left Geometric 'X' forming left edge & bottom sharp vertex -->
+                            <polygon points="8,6 22,6 35,28 45,12 52,23 41,40 60,72 60,98 44,71 33,53 23,69 16,58 27,41" fill="#FFFFFF"/>
+                            <!-- Right Geometric 'Q' forming top-right & right edge with diagonal slash tail -->
+                            <polygon points="56,6 112,6 94,38 86,24 72,24 64,37 74,54 82,41 90,55 75,81 68,69 73,60 53,27" fill="#FFFFFF"/>
+                            <!-- Bottom Right Tail Segment completing the inverted triangle tip -->
+                            <polygon points="62,76 68,66 74,76 62,97" fill="#FFFFFF"/>
+                        </svg>
+                        <span class="font-sans italic font-black text-white text-[13px] sm:text-[15px] tracking-[0.14em] leading-none uppercase">
+                            XQ PERFORMANCE
+                        </span>
+                    </div>
+                </button>
+                <span class="hidden lg:inline-block ml-2 px-2 py-0.5 text-[10px] text-gray-500 border border-brand-border rounded opacity-0 group-hover:opacity-100 transition pointer-events-none">
+                    點擊 LOGO 可替換原圖
+                </span>
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#services" class="text-gray-300 hover:text-brand-red transition-colors">熱門服務項目</a>
+                <a href="#showcase" class="text-gray-300 hover:text-brand-red transition-colors">實車升級案例</a>
+                <a href="#configurator" class="text-gray-300 hover:text-brand-red transition-colors">專屬報價諮詢</a>
+                <a href="#contact" class="text-gray-300 hover:text-brand-red transition-colors">門市與預約資訊</a>
+            </div>
+
+            <!-- Desktop Action Buttons -->
+            <div class="hidden md:flex items-center space-x-3">
+                <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-xs font-bold tracking-wider rounded-lg border border-brand-line/60 bg-brand-line/10 text-brand-line hover:bg-brand-line hover:text-white transition duration-300 inline-flex items-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                    官方 LINE 諮詢
+                </a>
+                <a href="#configurator" class="px-5 py-2.5 text-xs font-bold tracking-wider rounded-lg bg-brand-red hover:bg-red-700 text-white shadow-lg transition duration-300">
+                    填寫諮詢單
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-200 hover:text-white focus:outline-none p-2.5" aria-label="開啟選單">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-6 py-5 space-y-3">
+            <a href="#services" class="mobile-link block text-gray-200 hover:text-brand-red font-semibold py-2">熱門服務項目</a>
+            <a href="#showcase" class="mobile-link block text-gray-200 hover:text-brand-red font-semibold py-2">實車升級案例</a>
+            <a href="#configurator" class="mobile-link block text-gray-200 hover:text-brand-red font-semibold py-2">專屬報價諮詢</a>
+            <a href="#contact" class="mobile-link block text-gray-200 hover:text-brand-red font-semibold py-2">門市與預約資訊</a>
+            <div class="pt-3 flex flex-col gap-2.5 border-t border-brand-border">
+                <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" class="w-full text-center py-3 text-xs font-bold rounded-lg bg-brand-line text-white inline-flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                    加入官方 LINE 線上諮詢
+                </a>
+                <a href="#configurator" class="mobile-link w-full text-center py-3 text-xs font-bold rounded-lg bg-brand-red text-white">
+                    填寫專屬報價諮詢單
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-carbon overflow-hidden border-b border-brand-border">
+        <div class="absolute inset-0 z-0 opacity-25 mix-blend-luminosity pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=2000&q=80" onerror="this.src='https://placehold.co/1600x900/14161D/8E95A5?text=XQ+PERFORMANCE'" alt="XQ PERFORMANCE" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0C10] via-[#0B0C10]/75 to-transparent z-0"></div>
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-red/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <!-- Hero Text -->
+            <div class="max-w-2xl text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-red/10 border border-brand-red/30 text-brand-red text-xs font-bold uppercase tracking-widest mb-5">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span> HIGH-END TUNING &amp; CUSTOMIZATION
+                </div>
+                <h1 class="font-display text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                    EXTREME PRECISION.<br><span class="text-brand-red">PEAK PERFORMANCE.</span>
+                </h1>
+                <p class="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
+                    專注於汽車<strong class="text-white font-bold">「原廠規格強化」</strong>與<strong class="text-white font-bold">「高階性能/外觀改裝」</strong>。XQ PERFORMANCE 所有升級方案皆以<strong class="text-brand-red font-bold">「穩定、安全與實用性」</strong>為核心，透過嚴謹的實車數據評估與專業施工，為您的愛車打造最契合的操控與視覺體驗。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#configurator" class="px-8 py-4 bg-brand-red hover:bg-red-600 text-white font-bold rounded-xl text-sm tracking-wider neon-glow-red transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-file-signature text-base"></i> 填寫專屬報價諮詢單
+                    </a>
+                    <a href="#services" class="px-8 py-4 bg-brand-card hover:bg-zinc-800 text-gray-200 border border-brand-border font-bold rounded-xl text-sm tracking-wider transition flex items-center justify-center gap-2">
+                        瀏覽 5 大服務項目 <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trust Stats Grid -->
+            <div class="grid grid-cols-2 gap-4 w-full max-w-md">
+                <div class="bg-brand-card/90 backdrop-blur border border-brand-border p-5 rounded-2xl text-center hover:border-brand-red/50 transition">
+                    <div class="text-3xl font-display font-black text-brand-red mb-1">100%</div>
+                    <div class="text-xs text-gray-300 font-medium">實車數據精準匹配</div>
+                </div>
+                <div class="bg-brand-card/90 backdrop-blur border border-brand-border p-5 rounded-2xl text-center hover:border-brand-red/50 transition">
+                    <div class="text-3xl font-display font-black text-white mb-1">1,200+</div>
+                    <div class="text-xs text-gray-300 font-medium">高端車款改裝經驗</div>
+                </div>
+                <div class="bg-brand-card/90 backdrop-blur border border-brand-border p-5 rounded-2xl text-center hover:border-brand-red/50 transition">
+                    <div class="text-xl sm:text-2xl font-display font-black text-white mb-1">多元頂級選品</div>
+                    <div class="text-xs text-gray-300 font-medium leading-snug">Brembo / AP 套件與 XQ 自家研發碟盤、來令片</div>
+                </div>
+                <div class="bg-brand-card/90 backdrop-blur border border-brand-border p-5 rounded-2xl text-center hover:border-brand-red/50 transition">
+                    <div class="text-3xl font-display font-black text-brand-red mb-1">1 對 1</div>
+                    <div class="text-xs text-gray-300 font-medium">客製化實車數據評估</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 Core Services Section (Aligned with Official LINE) -->
+    <section id="services" class="py-20 bg-[#0B0C10] border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold text-brand-red uppercase tracking-widest">OFFICIAL SERVICE PILLARS</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2">熱門升級與服務項目</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">針對各大歐日系性能車款，提供穩定、安全且具實用性的全方位升級方案</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1: 原廠強化系列 -->
+                <div class="group bg-brand-card border border-brand-border rounded-2xl p-7 hover:border-brand-red transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 bg-red-950/50 border border-brand-red/30 rounded-xl flex items-center justify-center text-brand-red text-xl group-hover:bg-brand-red group-hover:text-white transition">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/5 text-gray-400">❶ 原廠強化系列</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">原廠強化系列</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            強化碟盤（平盤／劃線打孔盤）、高性能來令片（半金屬／陶瓷）、強化傳動軸升級，全面提升制動力與傳動耐用度。
+                        </p>
+                    </div>
+                    <a href="#configurator" onclick="selectCategory('oem')" class="text-xs font-bold text-brand-red group-hover:underline inline-flex items-center gap-1.5">
+                        配置原廠強化方案 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: 高階 / 碳陶瓷煞車 -->
+                <div class="group bg-brand-card border border-brand-border rounded-2xl p-7 hover:border-brand-red transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 bg-red-950/50 border border-brand-red/30 rounded-xl flex items-center justify-center text-brand-red text-xl group-hover:bg-brand-red group-hover:text-white transition">
+                                <i class="fa-solid fa-compact-disc"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/5 text-gray-400">❷ 高階煞車制動</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">高階 / 碳陶瓷煞車</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            提供碳陶瓷煞車套件、Brembo、AP Racing 多活塞卡鉗系統，搭配浮動碟盤與金屬油管，大幅減輕簧下重量與高溫抗衰退表現。
+                        </p>
+                    </div>
+                    <a href="#configurator" onclick="selectCategory('brake')" class="text-xs font-bold text-brand-red group-hover:underline inline-flex items-center gap-1.5">
+                        配置高階煞車方案 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: 精品排氣系統 -->
+                <div class="group bg-brand-card border border-brand-border rounded-2xl p-7 hover:border-brand-red transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 bg-red-950/50 border border-brand-red/30 rounded-xl flex items-center justify-center text-brand-red text-xl group-hover:bg-brand-red group-hover:text-white transition">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/5 text-gray-400">❸ 精品排氣系統</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">精品排氣系統</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            XQ PERFORMANCE 專屬訂製 304 不鏽鋼閥門中尾段排氣管、高流量當管升級，關閉閥門安靜無共鳴，開啟聲浪渾厚飽滿。
+                        </p>
+                    </div>
+                    <a href="#configurator" onclick="selectCategory('exhaust')" class="text-xs font-bold text-brand-red group-hover:underline inline-flex items-center gap-1.5">
+                        配置排氣升級方案 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4: 外觀空力套件 -->
+                <div class="group bg-brand-card border border-brand-border rounded-2xl p-7 hover:border-brand-red transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 bg-red-950/50 border border-brand-red/30 rounded-xl flex items-center justify-center text-brand-red text-xl group-hover:bg-brand-red group-hover:text-white transition">
+                                <i class="fa-solid fa-car-side"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/5 text-gray-400">❹ 外觀空力套件</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">外觀空力套件</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            碳纖維 / 鍛造碳纖維前下巴、側裙、後下擾流與尾翼全件精準安裝，密合度嚴格校準，展現獨特運動跑格。
+                        </p>
+                    </div>
+                    <a href="#configurator" onclick="selectCategory('aero')" class="text-xs font-bold text-brand-red group-hover:underline inline-flex items-center gap-1.5">
+                        配置外觀套件方案 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5: 買車 / 賣車與綜合服務 -->
+                <div class="group bg-brand-card border border-brand-border rounded-2xl p-7 hover:border-brand-red transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 md:col-span-2 lg:col-span-2">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="w-12 h-12 bg-red-950/50 border border-brand-red/30 rounded-xl flex items-center justify-center text-brand-red text-xl group-hover:bg-brand-red group-hover:text-white transition">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/5 text-gray-400">❺ 買車 / 賣車與綜合服務</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">買車 / 賣車與綜合服務</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            優質中古車買賣尋車、愛車高價收購估價、改裝車況專業把關，以及車輛定期保養、底盤維護與其他客製化施工服務。
+                        </p>
+                    </div>
+                    <a href="#configurator" onclick="selectCategory('trading')" class="text-xs font-bold text-brand-red group-hover:underline inline-flex items-center gap-1.5">
+                        諮詢買賣車與保養服務 <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Build & Service Showcase (Filterable Gallery) -->
+    <section id="showcase" class="py-20 bg-carbon border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+                <div>
+                    <span class="text-xs font-bold text-brand-red uppercase tracking-widest">PORTFOLIO &amp; BUILDS</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2">實車升級案例</h2>
+                </div>
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterGallery('all', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-brand-red bg-brand-red text-white transition">全部案例</button>
+                    <button onclick="filterGallery('oem', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-brand-border bg-brand-card text-gray-300 hover:border-brand-red transition">原廠強化與制動</button>
+                    <button onclick="filterGallery('brake', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-brand-border bg-brand-card text-gray-300 hover:border-brand-red transition">碳陶瓷與多活塞</button>
+                    <button onclick="filterGallery('exhaust', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-brand-border bg-brand-card text-gray-300 hover:border-brand-red transition">不鏽鋼排氣</button>
+                    <button onclick="filterGallery('aero', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-bold border border-brand-border bg-brand-card text-gray-300 hover:border-brand-red transition">碳纖維外觀</button>
+                </div>
+            </div>
+
+            <!-- Gallery Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="galleryGrid">
+                <!-- Case 1: Clean Studio Product Visual of Plain Disc + Slotted/Drilled Disc + Olive Semi-Metallic Pad + Blue Ceramic Pad (Zero Poster Text) -->
+                <div class="gallery-card oem group bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/60 transition">
+                    <div class="relative h-56 overflow-hidden bg-gradient-to-b from-[#171B24] via-[#10131A] to-[#08090D] flex items-center justify-center">
+                        <!-- Studio Spotlight Glow -->
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_55%_40%,rgba(255,255,255,0.09),transparent_65%)] pointer-events-none"></div>
+                        <div class="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-black/85 to-transparent pointer-events-none"></div>
+
+                        <!-- Photorealistic Layered SVG of XQ Standard Smooth Rotor, Slotted & Drilled Rotor, Olive Pad & Blue Pad -->
+                        <svg class="w-full h-full p-2 group-hover:scale-105 transition duration-500" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Metallic Brushed Steel Gradients -->
+                                <radialGradient id="rotorMetalLeft" cx="45%" cy="40%" r="55%">
+                                    <stop offset="0%" stop-color="#F3F4F6"/>
+                                    <stop offset="45%" stop-color="#D1D5DB"/>
+                                    <stop offset="78%" stop-color="#9CA3AF"/>
+                                    <stop offset="100%" stop-color="#6B7280"/>
+                                </radialGradient>
+                                <radialGradient id="rotorMetalRight" cx="55%" cy="38%" r="55%">
+                                    <stop offset="0%" stop-color="#FFFFFF"/>
+                                    <stop offset="42%" stop-color="#D6DBE2"/>
+                                    <stop offset="78%" stop-color="#9AA2AE"/>
+                                    <stop offset="100%" stop-color="#5B6270"/>
+                                </radialGradient>
+                                <radialGradient id="rotorBell" cx="50%" cy="45%" r="50%">
+                                    <stop offset="0%" stop-color="#E5E7EB"/>
+                                    <stop offset="65%" stop-color="#9CA3AF"/>
+                                    <stop offset="100%" stop-color="#4B5563"/>
+                                </radialGradient>
+                                <!-- Olive / Bronze Semi-Metallic Pad Gradient -->
+                                <linearGradient id="olivePadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8B8D4B"/>
+                                    <stop offset="50%" stop-color="#6E7037"/>
+                                    <stop offset="100%" stop-color="#4B4D24"/>
+                                </linearGradient>
+                                <!-- Performance Blue Ceramic Pad Gradient -->
+                                <linearGradient id="bluePadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#2563EB"/>
+                                    <stop offset="55%" stop-color="#1D4ED8"/>
+                                    <stop offset="100%" stop-color="#1E3A8A"/>
+                                </linearGradient>
+                                <!-- Friction Lining Texture -->
+                                <linearGradient id="frictionMat" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#374151"/>
+                                    <stop offset="100%" stop-color="#1F2937"/>
+                                </linearGradient>
+                                <filter id="dropShadow" x="-15%" y="-15%" width="130%" height="135%">
+                                    <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.75"/>
+                                </filter>
+                            </defs>
+
+                            <!-- Floor Contact Shadows -->
+                            <ellipse cx="145" cy="196" rx="115" ry="12" fill="#000000" opacity="0.7"/>
+                            <ellipse cx="235" cy="194" rx="100" ry="11" fill="#000000" opacity="0.65"/>
+
+                            <!-- 1. Left Rotor: Standard Smooth Ventilated Disc -->
+                            <g filter="url(#dropShadow)">
+                                <circle cx="132" cy="108" r="68" fill="url(#rotorMetalLeft)" stroke="#4B5563" stroke-width="2"/>
+                                <circle cx="132" cy="108" r="64" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1"/>
+                                <circle cx="132" cy="108" r="35" fill="url(#rotorBell)" stroke="#4B5563" stroke-width="1.8"/>
+                                <!-- Center Hub Bore -->
+                                <circle cx="132" cy="108" r="14" fill="#181C24" stroke="#6B7280" stroke-width="2"/>
+                                <!-- 10 Lug / Mounting Holes -->
+                                <g fill="#181C24">
+                                    <circle cx="132" cy="84" r="3.4"/>
+                                    <circle cx="146" cy="89" r="3.4"/>
+                                    <circle cx="155" cy="101" r="3.4"/>
+                                    <circle cx="155" cy="115" r="3.4"/>
+                                    <circle cx="146" cy="127" r="3.4"/>
+                                    <circle cx="132" cy="132" r="3.4"/>
+                                    <circle cx="118" cy="127" r="3.4"/>
+                                    <circle cx="109" cy="115" r="3.4"/>
+                                    <circle cx="109" cy="101" r="3.4"/>
+                                    <circle cx="118" cy="89" r="3.4"/>
+                                </g>
+                            </g>
+
+                            <!-- 2. Right Rotor: Slotted & Drilled Performance Disc -->
+                            <g filter="url(#dropShadow)">
+                                <circle cx="242" cy="96" r="72" fill="url(#rotorMetalRight)" stroke="#4B5563" stroke-width="2"/>
+                                <circle cx="242" cy="96" r="68" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1"/>
+                                <!-- Slotted Grooves around friction ring -->
+                                <g stroke="#272C36" stroke-width="2.2" stroke-linecap="round">
+                                    <line x1="242" y1="30" x2="253" y2="54"/>
+                                    <line x1="292" y1="52" x2="274" y2="71"/>
+                                    <line x1="308" y1="104" x2="282" y2="108"/>
+                                    <line x1="281" y1="150" x2="264" y2="129"/>
+                                    <line x1="230" y1="162" x2="225" y2="136"/>
+                                    <line x1="184" y1="136" x2="205" y2="120"/>
+                                    <line x1="176" y1="84" x2="202" y2="83"/>
+                                    <line x1="201" y1="41" x2="220" y2="60"/>
+                                </g>
+                                <!-- Cross-Drilled Cooling Holes -->
+                                <g fill="#1F242D">
+                                    <circle cx="224" cy="36" r="1.8"/><circle cx="228" cy="44" r="1.8"/><circle cx="232" cy="52" r="1.8"/>
+                                    <circle cx="272" cy="40" r="1.8"/><circle cx="266" cy="48" r="1.8"/><circle cx="261" cy="56" r="1.8"/>
+                                    <circle cx="301" cy="76" r="1.8"/><circle cx="292" cy="80" r="1.8"/><circle cx="283" cy="84" r="1.8"/>
+                                    <circle cx="298" cy="127" r="1.8"/><circle cx="289" cy="122" r="1.8"/><circle cx="280" cy="117" r="1.8"/>
+                                    <circle cx="258" cy="158" r="1.8"/><circle cx="254" cy="149" r="1.8"/><circle cx="250" cy="140" r="1.8"/>
+                                    <circle cx="206" cy="152" r="1.8"/><circle cx="212" cy="144" r="1.8"/><circle cx="218" cy="136" r="1.8"/>
+                                    <circle cx="178" cy="111" r="1.8"/><circle cx="187" cy="109" r="1.8"/><circle cx="196" cy="107" r="1.8"/>
+                                    <circle cx="188" cy="61" r="1.8"/><circle cx="196" cy="66" r="1.8"/><circle cx="204" cy="71" r="1.8"/>
+                                </g>
+                                <!-- Center Hat & Lug Holes -->
+                                <circle cx="242" cy="96" r="35" fill="url(#rotorBell)" stroke="#4B5563" stroke-width="1.8"/>
+                                <circle cx="242" cy="96" r="14" fill="#181C24" stroke="#6B7280" stroke-width="2"/>
+                                <g fill="#181C24">
+                                    <circle cx="242" cy="73" r="3.6"/>
+                                    <circle cx="264" cy="89" r="3.6"/>
+                                    <circle cx="256" cy="115" r="3.6"/>
+                                    <circle cx="228" cy="115" r="3.6"/>
+                                    <circle cx="220" cy="89" r="3.6"/>
+                                </g>
+                            </g>
+
+                            <!-- 3. Foreground Left Pad: Olive / Bronze Semi-Metallic Brake Pad -->
+                            <g transform="translate(68, 128) rotate(-13)" filter="url(#dropShadow)">
+                                <!-- Backing Plate Ears & Body -->
+                                <path d="M-8,26 L4,26 L4,18 C22,4 88,4 106,18 L106,26 L118,26 L118,38 L106,38 L106,48 C82,42 28,42 4,48 L4,38 L-8,38 Z" fill="url(#olivePadGrad)" stroke="#36381A" stroke-width="1.5"/>
+                                <!-- Friction Material Block -->
+                                <path d="M12,21 C30,10 80,10 98,21 L96,42 C76,36 34,36 14,42 Z" fill="url(#frictionMat)" stroke="#111827" stroke-width="1.2"/>
+                                <!-- Chamfered Center Groove -->
+                                <line x1="55" y1="13" x2="55" y2="38" stroke="#111827" stroke-width="2"/>
+                                <!-- Subtle XQ Mark on Backing Plate -->
+                                <polygon points="50,3 60,3 55,10" fill="#FFFFFF" opacity="0.85"/>
+                            </g>
+
+                            <!-- 4. Foreground Right Pad: Performance Blue Ceramic Brake Pad -->
+                            <g transform="translate(184, 144) rotate(2)" filter="url(#dropShadow)">
+                                <!-- Backing Plate Ears & Body -->
+                                <path d="M-8,24 L4,24 L4,15 C26,2 96,2 118,15 L118,24 L130,24 L130,36 L118,36 L118,46 C92,40 30,40 4,46 L4,36 L-8,36 Z" fill="url(#bluePadGrad)" stroke="#172554" stroke-width="1.5"/>
+                                <!-- Friction Material Block -->
+                                <path d="M14,19 C34,8 88,8 108,19 L106,40 C84,34 38,34 16,40 Z" fill="url(#frictionMat)" stroke="#111827" stroke-width="1.2"/>
+                                <!-- Chamfered Center Groove -->
+                                <line x1="61" y1="11" x2="61" y2="36" stroke="#111827" stroke-width="2"/>
+                                <!-- Subtle XQ Mark on Backing Plate -->
+                                <polygon points="56,2 66,2 61,9" fill="#FFFFFF" opacity="0.9"/>
+                            </g>
+                        </svg>
+
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">原廠強化系列</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">原廠規格制動與傳動強化</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            換裝 XQ 強化平盤／劃線打孔碟盤、半金屬／陶瓷來令片與強化傳動軸，兼顧日常通勤與山道操駕。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 2: Carbon Ceramic & Multi-piston Brake -->
+                <div class="gallery-card brake group bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/60 transition">
+                    <div class="relative h-56 overflow-hidden bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=85" onerror="this.src='https://placehold.co/800x600/14161D/E50914?text=CARBON+CERAMIC+BRAKE'" alt="碳陶瓷煞車與多活塞升級" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">高階 / 碳陶瓷煞車</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">碳陶瓷煞車與多活塞升級</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            大幅減輕簧下重量，搭配 Brembo / AP Racing 多活塞卡鉗系統，提供高溫抗衰退的線性制動力。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 3: Modern Porsche Rear View for 304 Stainless Steel Exhaust -->
+                <div class="gallery-card exhaust group bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/60 transition">
+                    <div class="relative h-56 overflow-hidden bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85" onerror="this.src='https://placehold.co/800x600/14161D/E50914?text=304+STAINLESS+EXHAUST'" alt="保時捷車尾與304不鏽鋼閥門排氣系統" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">精品排氣系統</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">304不鏽鋼閥門中尾段排氣管</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            XQ PERFORMANCE 專屬訂製 304 不鏽鋼閥門系統，關閉閥門安靜無共鳴，開啟聲浪渾厚飽滿。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 4: Mercedes-AMG Dynamic 3/4 Angle with Forged Carbon Aero Kit -->
+                <div class="gallery-card aero group bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-red/60 transition">
+                    <div class="relative h-56 overflow-hidden bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=85" onerror="this.src='https://placehold.co/800x600/14161D/E50914?text=CARBON+AERO+KIT'" alt="賓士AMG碳纖維外觀空力套件精準安裝" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-brand-red text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">外觀空力套件</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">鍛造碳纖維外觀空力套件精準安裝</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">
+                            包含前下巴、側裙、後下擾流與尾翼，全件密合度精準校準，展現獨特跑格細節。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Configurator & Official LINE Quote Builder -->
+    <section id="configurator" class="py-20 bg-[#0B0C10] border-b border-brand-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="inline-block px-3.5 py-1 bg-red-950/50 border border-brand-red/30 rounded-full text-brand-red text-xs font-bold uppercase tracking-widest mb-3">
+                    PRECISION CUSTOM CONFIGURATOR
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">XQ 線上車輛升級規格試算與預約</h2>
+                <p class="text-gray-400 text-sm mt-2 max-w-xl mx-auto">
+                    填寫愛車規格與欲升級項目，系統將自動為您整理專屬諮詢明細，一鍵複製即可傳送至官方 LINE 由專員為您評估
+                </p>
+            </div>
+
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-10 shadow-2xl">
+                <form id="quoteForm" onsubmit="generateLineQuote(event)" class="space-y-8">
+                    
+                    <!-- STEP 1: Select Upgrade Category (5 Official Categories) -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                            STEP 1. 選擇主要升級類別 UPGRADE CATEGORY *
+                        </label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="category" value="oem" checked class="peer hidden" onchange="renderCategoryFields('oem')">
+                                <div class="h-full p-3.5 rounded-xl bg-[#0B0C10] border border-brand-border peer-checked:border-brand-red peer-checked:bg-red-950/25 text-center transition flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-gears text-lg text-gray-400 peer-checked:text-brand-red"></i>
+                                    <span class="text-xs font-bold leading-snug">原廠強化系列</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="category" value="brake" class="peer hidden" onchange="renderCategoryFields('brake')">
+                                <div class="h-full p-3.5 rounded-xl bg-[#0B0C10] border border-brand-border peer-checked:border-brand-red peer-checked:bg-red-950/25 text-center transition flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-compact-disc text-lg text-gray-400 peer-checked:text-brand-red"></i>
+                                    <span class="text-xs font-bold leading-snug">高階 / 碳陶瓷煞車</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="category" value="exhaust" class="peer hidden" onchange="renderCategoryFields('exhaust')">
+                                <div class="h-full p-3.5 rounded-xl bg-[#0B0C10] border border-brand-border peer-checked:border-brand-red peer-checked:bg-red-950/25 text-center transition flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-wind text-lg text-gray-400 peer-checked:text-brand-red"></i>
+                                    <span class="text-xs font-bold leading-snug">精品排氣系統</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="category" value="aero" class="peer hidden" onchange="renderCategoryFields('aero')">
+                                <div class="h-full p-3.5 rounded-xl bg-[#0B0C10] border border-brand-border peer-checked:border-brand-red peer-checked:bg-red-950/25 text-center transition flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-car-side text-lg text-gray-400 peer-checked:text-brand-red"></i>
+                                    <span class="text-xs font-bold leading-snug">外觀空力套件</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer col-span-2 sm:col-span-1">
+                                <input type="radio" name="category" value="trading" class="peer hidden" onchange="renderCategoryFields('trading')">
+                                <div class="h-full p-3.5 rounded-xl bg-[#0B0C10] border border-brand-border peer-checked:border-brand-red peer-checked:bg-red-950/25 text-center transition flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-handshake text-lg text-gray-400 peer-checked:text-brand-red"></i>
+                                    <span class="text-xs font-bold leading-snug">買車 / 賣車與綜合服務</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Vehicle Information -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                            STEP 2. 車輛基本資訊 VEHICLE INFORMATION *
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1.5">車輛品牌 (Make) *</label>
+                                <input type="text" id="carMake" required placeholder="例：BMW, Porsche, Ford" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1.5">車型名稱 (Model) *</label>
+                                <input type="text" id="carModel" required placeholder="例：M3, 911, Focus, Golf R" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1.5">出廠年份 (Year) *</label>
+                                <input type="text" id="carYear" required placeholder="例：2023" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1.5">車門數 / 車身型式 *</label>
+                                <select id="carBody" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                                    <option value="四門房車 (Sedan)">四門房車 (Sedan)</option>
+                                    <option value="雙門跑車 (Coupe)">雙門跑車 (Coupe)</option>
+                                    <option value="五門掀背 (Hatchback)">五門掀背 (Hatchback)</option>
+                                    <option value="五門旅行車 (Wagon)">五門旅行車 (Wagon)</option>
+                                    <option value="休旅車 (SUV)">休旅車 (SUV)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Dynamic Category-Specific Options -->
+                    <div id="dynamicFieldsContainer" class="pt-4 border-t border-brand-border/70">
+                        <!-- Rendered via JavaScript -->
+                    </div>
+
+                    <!-- Notes -->
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">目前原車改裝狀態或特殊需求 Notes / Existing Mods</label>
+                        <textarea id="carNotes" rows="3" placeholder="例：原車已換19吋鋁圈、輪圈J值或希望加強低速煞車線性度..." class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition"></textarea>
+                    </div>
+
+                    <!-- Trust Note & Submit Button -->
+                    <div class="pt-4 border-t border-brand-border/70 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-2.5 text-xs text-gray-300">
+                            <i class="fa-solid fa-shield-halved text-brand-red text-lg shrink-0"></i>
+                            <span>專人核對實車數據與安裝規格，確保套件完美直上密合</span>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-brand-red hover:bg-red-600 text-white font-bold rounded-xl text-sm tracking-wider shadow-lg neon-glow-red transition flex items-center justify-center gap-2 shrink-0">
+                            <i class="fa-solid fa-calculator"></i> 生成估價單與線上諮詢
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store & Appointment Info Section -->
+    <section id="contact" class="py-20 bg-carbon">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card border border-brand-border rounded-3xl p-8 sm:p-12 shadow-2xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                    <div class="space-y-6 flex-1">
+                        <div>
+                            <span class="text-xs font-bold text-brand-red uppercase tracking-widest">STORE &amp; APPOINTMENT</span>
+                            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-1">門市與預約資訊</h2>
+                        </div>
+
+                        <div class="space-y-5 text-sm">
+                            <!-- Location -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-location-dot text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">XQ PERFORMANCE 服務據點</h4>
+                                    <p class="text-gray-400 text-xs sm:text-sm mt-1">採預約制實車評估與安裝服務（歡迎先透過 LINE 聯繫）</p>
+                                </div>
+                            </div>
+
+                            <!-- Business Hours -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-clock text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">服務時間</h4>
+                                    <p class="text-gray-300 text-xs sm:text-sm mt-1 font-medium">9:00～19:00（週一至週六）<span class="text-gray-400">（週日採預約制）</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Official LINE Direct Card -->
+                            <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-4 rounded-2xl bg-[#0B0C10] border border-brand-line/40 hover:border-brand-line transition group">
+                                <div class="w-11 h-11 rounded-xl bg-brand-line flex items-center justify-center text-white shrink-0 shadow-md group-hover:scale-105 transition">
+                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h4 class="font-bold text-white text-base group-hover:text-brand-line transition">官方 LINE 線上諮詢</h4>
+                                        <span class="text-xs font-bold text-brand-line flex items-center gap-1">點擊加入 <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                                    </div>
+                                    <p class="text-gray-400 text-xs sm:text-sm mt-1">留言您的車款年份與升級需求，專員將盡快為您評估</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Direct LINE CTA Box -->
+                    <div class="bg-[#0B0C10] border border-brand-border rounded-2xl p-6 sm:p-8 text-center md:w-80 shrink-0">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-brand-line text-white flex items-center justify-center shadow-lg neon-glow-line">
+                            <svg class="w-9 h-9 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                        </div>
+                        <h3 class="font-bold text-white text-lg mb-2">立即聯繫專員</h3>
+                        <p class="text-xs text-gray-400 mb-5 leading-relaxed">
+                            點擊下方按鈕直接加入 XQ PERFORMANCE 官方 LINE 帳號進行 1 對 1 諮詢
+                        </p>
+                        <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" class="block w-full py-3.5 px-4 bg-brand-line hover:bg-[#05b34c] text-white font-bold rounded-xl text-sm transition shadow-lg">
+                            開啟官方 LINE 對話
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#08090C] border-t border-brand-border py-10 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col items-center sm:items-start">
+                <div id="footerCustomLogoWrapper" class="hidden">
+                    <img id="footerCustomLogoImg" src="" alt="XQ PERFORMANCE" class="h-10 w-auto object-contain mix-blend-lighten">
+                </div>
+                <div id="footerDefaultLogo" class="flex flex-col items-center">
+                    <svg class="w-8 h-7 mb-1" viewBox="0 0 120 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,6 22,6 35,28 45,12 52,23 41,40 60,72 60,98 44,71 33,53 23,69 16,58 27,41" fill="#FFFFFF"/>
+                        <polygon points="56,6 112,6 94,38 86,24 72,24 64,37 74,54 82,41 90,55 75,81 68,69 73,60 53,27" fill="#FFFFFF"/>
+                        <polygon points="62,76 68,66 74,76 62,97" fill="#FFFFFF"/>
+                    </svg>
+                    <span class="font-sans italic font-black text-white tracking-[0.14em] text-xs uppercase">XQ PERFORMANCE</span>
+                </div>
+            </div>
+            <div class="text-center sm:text-right space-y-2">
+                <p class="text-gray-400">原廠規格強化・高階性能/外觀改裝・車輛綜合服務</p>
+                <div class="flex flex-wrap items-center justify-center sm:justify-end gap-3">
+                    <button type="button" onclick="downloadStandaloneHtml()" class="px-3 py-1.5 rounded-md bg-white/5 hover:bg-white/10 text-gray-300 border border-brand-border transition inline-flex items-center gap-1.5">
+                        <i class="fa-solid fa-download text-brand-red"></i> 下載網頁完整原始檔 (index.html)
+                    </button>
+                </div>
+                <p>© 2026 XQ PERFORMANCE 祥屺國際. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Bottom-Right Official LINE Button -->
+    <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" aria-label="加入 XQ PERFORMANCE 官方 LINE" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-brand-line hover:bg-[#05b34c] text-white flex items-center justify-center shadow-2xl neon-glow-line transition-transform duration-300 hover:scale-110">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+    </a>
+
+    <!-- Quote Summary & Copy-to-LINE Modal -->
+    <div id="quoteModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-brand-card border border-brand-red rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-1" aria-label="關閉視窗">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-brand-red/20 text-brand-red rounded-xl flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-xl font-bold text-white">專屬諮詢明細已生成</h3>
+                    <p class="text-xs text-gray-400">一鍵複製下方文字，直接貼上至官方 LINE 即可快速估價</p>
+                </div>
+            </div>
+
+            <!-- Copyable Formatted Text Box -->
+            <div class="bg-[#0B0C10] p-4 rounded-xl border border-brand-border mb-5">
+                <textarea id="generatedQuoteText" readonly rows="7" class="w-full bg-transparent text-xs sm:text-sm text-gray-200 font-mono leading-relaxed focus:outline-none resize-none"></textarea>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button id="copyBtn" onclick="copyQuoteText()" class="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 border border-brand-border text-white font-bold text-sm rounded-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i> <span id="copyBtnLabel">一鍵複製諮詢內容</span>
+                </button>
+                <a href="https://lin.ee/vjwMAD6" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-brand-line hover:bg-[#05b34c] text-white font-bold text-sm text-center rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                    前往官方 LINE 傳送
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Export / Download Standalone Production-Ready index.html File
+        function downloadStandaloneHtml() {
+            const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Custom Logo Upload & Auto-Crop Handler (Blends pure black/white background cleanly)
+        function applyCustomLogo(dataUrl) {
+            if (!dataUrl) return;
+            const customWrap = document.getElementById('customLogoWrapper');
+            const customImg = document.getElementById('customLogoImg');
+            const defaultLogo = document.getElementById('defaultVectorLogo');
+            const footerCustomWrap = document.getElementById('footerCustomLogoWrapper');
+            const footerCustomImg = document.getElementById('footerCustomLogoImg');
+            const footerDefault = document.getElementById('footerDefaultLogo');
+
+            if (customImg && customWrap && defaultLogo) {
+                customImg.src = dataUrl;
+                customWrap.classList.remove('hidden');
+                customWrap.classList.add('flex');
+                defaultLogo.classList.add('hidden');
+            }
+            if (footerCustomImg && footerCustomWrap && footerDefault) {
+                footerCustomImg.src = dataUrl;
+                footerCustomWrap.classList.remove('hidden');
+                footerDefault.classList.add('hidden');
+            }
+        }
+
+        function handleCustomLogoUpload(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imgData.data;
+
+                    const isWhiteBg = data[0] > 200 && data[1] > 200 && data[2] > 200;
+                    let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+
+                    for (let y = 0; y < canvas.height; y++) {
+                        for (let x = 0; x < canvas.width; x++) {
+                            const idx = (y * canvas.width + x) * 4;
+                            const r = data[idx], g = data[idx + 1], b = data[idx + 2], a = data[idx + 3];
+                            if (isWhiteBg) {
+                                const brightness = (r + g + b) / 3;
+                                if (brightness < 220 && a > 20) {
+                                    if (x < minX) minX = x;
+                                    if (x > maxX) maxX = x;
+                                    if (y < minY) minY = y;
+                                    if (y > maxY) maxY = y;
+                                }
+                                data[idx] = 255;
+                                data[idx + 1] = 255;
+                                data[idx + 2] = 255;
+                                data[idx + 3] = brightness < 230 ? 255 : 0;
+                            } else {
+                                const brightness = (r + g + b) / 3;
+                                if (brightness > 40 && a > 20) {
+                                    if (x < minX) minX = x;
+                                    if (x > maxX) maxX = x;
+                                    if (y < minY) minY = y;
+                                    if (y > maxY) maxY = y;
+                                }
+                                data[idx] = 255;
+                                data[idx + 1] = 255;
+                                data[idx + 2] = 255;
+                                data[idx + 3] = brightness > 35 ? brightness : 0;
+                            }
+                        }
+                    }
+
+                    ctx.putImageData(imgData, 0, 0);
+                    if (maxX > minX && maxY > minY) {
+                        const pad = 6;
+                        const cropX = Math.max(0, minX - pad);
+                        const cropY = Math.max(0, minY - pad);
+                        const cropW = Math.min(canvas.width - cropX, (maxX - minX) + pad * 2);
+                        const cropH = Math.min(canvas.height - cropY, (maxY - minY) + pad * 2);
+                        const trimmed = document.createElement('canvas');
+                        trimmed.width = cropW;
+                        trimmed.height = cropH;
+                        trimmed.getContext('2d').drawImage(canvas, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
+                        const finalUrl = trimmed.toDataURL('image/png');
+                        try { localStorage.setItem('xq_custom_logo', finalUrl); } catch (err) {}
+                        applyCustomLogo(finalUrl);
+                    } else {
+                        applyCustomLogo(e.target.result);
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Restore custom uploaded logo if saved
+        try {
+            const savedLogo = localStorage.getItem('xq_custom_logo');
+            if (savedLogo) applyCustomLogo(savedLogo);
+        } catch (err) {}
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Dynamic Fields Templates for Step 3
+        const categoryTemplates = {
+            oem: `
+                <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                    STEP 3. 原廠強化系列規格選擇 OEM+ SPECIFICATIONS
+                </label>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-2">強化項目（可複選）</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                            <label class="flex items-center gap-2.5 bg-[#0B0C10] border border-brand-border px-3.5 py-3 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="oemItems" value="強化碟盤" checked class="accent-[#E50914] w-4 h-4">
+                                <span class="font-medium text-gray-200">強化碟盤</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 bg-[#0B0C10] border border-brand-border px-3.5 py-3 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="oemItems" value="高性能來令片" checked class="accent-[#E50914] w-4 h-4">
+                                <span class="font-medium text-gray-200">高性能來令片</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 bg-[#0B0C10] border border-brand-border px-3.5 py-3 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="oemItems" value="強化傳動軸" class="accent-[#E50914] w-4 h-4">
+                                <span class="font-medium text-gray-200">強化傳動軸</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1.5">碟盤樣式選擇 Rotor Pattern</label>
+                            <select id="oemRotor" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                                <option value="劃線打孔盤">劃線打孔盤</option>
+                                <option value="平盤">平盤</option>
+                                <option value="無需更換碟盤">無需更換碟盤</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1.5">來令片材質選擇 Brake Pad Material</label>
+                            <select id="oemPad" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                                <option value="半金屬（粉塵少、耐磨耗）">半金屬（粉塵少、耐磨耗）</option>
+                                <option value="陶瓷（耐高溫、靈敏度高）">陶瓷（耐高溫、靈敏度高）</option>
+                                <option value="無需更換來令片">無需更換來令片</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `,
+            brake: `
+                <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                    STEP 3. 高階 / 碳陶瓷煞車規格選擇 BRAKE SPECIFICATIONS
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">品牌偏好 Brand Preference</label>
+                        <select id="brakeBrand" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="XQ Performance 客製套件">XQ Performance 客製套件</option>
+                            <option value="Brembo 多活塞系統">Brembo 多活塞系統</option>
+                            <option value="AP Racing 多活塞系統">AP Racing 多活塞系統</option>
+                            <option value="碳陶瓷煞車全套升級">碳陶瓷煞車全套升級</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">安裝位置 Axle Location</label>
+                        <select id="brakeAxle" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="前軸 (Front Only)">前軸 (Front Only)</option>
+                            <option value="前後軸全套 (Front & Rear)">前後軸全套 (Front &amp; Rear)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">碟盤樣式選擇 Rotor Pattern</label>
+                        <select id="brakeRotor" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="劃線打孔盤">劃線打孔盤</option>
+                            <option value="平盤">平盤</option>
+                            <option value="碳陶瓷複合碟盤">碳陶瓷複合碟盤</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">來令片材質選擇 Brake Pad Material</label>
+                        <select id="brakePad" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="半金屬（粉塵少、耐磨耗）">半金屬（粉塵少、耐磨耗）</option>
+                            <option value="陶瓷（耐高溫、靈敏度高）">陶瓷（耐高溫、靈敏度高）</option>
+                        </select>
+                    </div>
+                </div>
+            `,
+            exhaust: `
+                <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                    STEP 3. 精品排氣系統規格選擇 EXHAUST SPECIFICATIONS
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">排氣升級範圍 Upgrade Scope</label>
+                        <select id="exhaustScope" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="304 不鏽鋼閥門中尾段排氣管">304 不鏽鋼閥門中尾段排氣管</option>
+                            <option value="304 不鏽鋼閥門尾段排氣管">304 不鏽鋼閥門尾段排氣管</option>
+                            <option value="高流量當管 (Downpipe) + 中尾段全段">高流量當管 (Downpipe) + 中尾段全段</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">目前後保桿 / 排氣狀態 Current Rear Setup</label>
+                        <select id="exhaustBumper" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="全原廠未改裝">全原廠未改裝</option>
+                            <option value="已改裝後下擾流 / 保桿套件">已改裝後下擾流 / 保桿套件</option>
+                            <option value="已改裝其他品牌排氣管">已改裝其他品牌排氣管</option>
+                        </select>
+                    </div>
+                </div>
+            `,
+            aero: `
+                <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                    STEP 3. 外觀空力套件規格選擇 EXTERIOR &amp; AERO SPECIFICATIONS
+                </label>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">材質偏好 Material Finish</label>
+                        <select id="aeroMaterial" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="經典斜紋碳纖維">經典斜紋碳纖維</option>
+                            <option value="鍛造碳纖維 (Forged Carbon)">鍛造碳纖維 (Forged Carbon)</option>
+                            <option value="亮黑烤漆套件">亮黑烤漆套件</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-2">欲改裝部位（可複選）</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                            <label class="flex items-center gap-2 bg-[#0B0C10] border border-brand-border px-3 py-2.5 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="aeroParts" value="前下巴" checked class="accent-[#E50914] w-4 h-4">
+                                <span>前下巴</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-[#0B0C10] border border-brand-border px-3 py-2.5 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="aeroParts" value="側裙" checked class="accent-[#E50914] w-4 h-4">
+                                <span>側裙</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-[#0B0C10] border border-brand-border px-3 py-2.5 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="aeroParts" value="後下擾流" checked class="accent-[#E50914] w-4 h-4">
+                                <span>後下擾流</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-[#0B0C10] border border-brand-border px-3 py-2.5 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" name="aeroParts" value="尾翼" class="accent-[#E50914] w-4 h-4">
+                                <span>尾翼</span>
+                            </label>
+                            <label class="flex items-center gap-2 bg-[#0B0C10] border border-brand-border px-3 py-2.5 rounded-lg text-xs cursor-pointer hover:border-brand-red">
+                                <input type="checkbox" id="aeroOtherCheckbox" name="aeroParts" value="其他" onchange="toggleAeroOtherInput()" class="accent-[#E50914] w-4 h-4">
+                                <span>其他</span>
+                            </label>
+                        </div>
+                        <div id="aeroOtherWrapper" class="hidden mt-3">
+                            <input type="text" id="aeroOtherCustom" placeholder="請填寫其他欲改裝部位（例如：碳纖維後視鏡蓋、水箱護罩、葉子板飾蓋...）" class="w-full bg-[#0B0C10] border border-brand-red/60 rounded-lg px-4 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-brand-red">
+                        </div>
+                    </div>
+                </div>
+            `,
+            trading: `
+                <label class="block text-xs font-bold uppercase tracking-wider text-brand-red mb-3">
+                    STEP 3. 買車 / 賣車與綜合服務項目 SERVICE DETAILS
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">服務需求 Service Type</label>
+                        <select id="tradingType" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                            <option value="我要買車（尋找優質車源）">我要買車（尋找優質車源）</option>
+                            <option value="我要賣車（愛車高價估價）">我要賣車（愛車高價估價）</option>
+                            <option value="改裝車況專業評估">改裝車況專業評估</option>
+                            <option value="其他保養 / 施工">其他保養 / 施工</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1.5">預算 / 里程或需求簡述</label>
+                        <input type="text" id="tradingBrief" placeholder="例：里程約 3.5 萬公里 / 定期保養與全車檢查" class="w-full bg-[#0B0C10] border border-brand-border rounded-lg px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-red">
+                    </div>
+                </div>
+            `
+        };
+
+        function renderCategoryFields(category) {
+            document.getElementById('dynamicFieldsContainer').innerHTML = categoryTemplates[category] || categoryTemplates.oem;
+        }
+
+        function toggleAeroOtherInput() {
+            const checkbox = document.getElementById('aeroOtherCheckbox');
+            const wrapper = document.getElementById('aeroOtherWrapper');
+            if (checkbox && wrapper) {
+                if (checkbox.checked) {
+                    wrapper.classList.remove('hidden');
+                    document.getElementById('aeroOtherCustom')?.focus();
+                } else {
+                    wrapper.classList.add('hidden');
+                }
+            }
+        }
+
+        // Initialize default category on load
+        renderCategoryFields('oem');
+
+        // Helper when clicking service card links
+        function selectCategory(category) {
+            const radio = document.querySelector(`input[name="category"][value="${category}"]`);
+            if (radio) {
+                radio.checked = true;
+                renderCategoryFields(category);
+            }
+        }
+
+        // Generate Formatted LINE Quote Text & Open Modal
+        function generateLineQuote(e) {
+            e.preventDefault();
+
+            const category = document.querySelector('input[name="category"]:checked').value;
+            const make = document.getElementById('carMake').value.trim();
+            const model = document.getElementById('carModel').value.trim();
+            const year = document.getElementById('carYear').value.trim();
+            const body = document.getElementById('carBody').value;
+            const notes = document.getElementById('carNotes').value.trim() || '無';
+
+            let serviceTitle = '';
+            let detailsLines = [];
+
+            if (category === 'oem') {
+                serviceTitle = '❶ 原廠強化系列';
+                const checkedItems = Array.from(document.querySelectorAll('input[name="oemItems"]:checked')).map(el => el.value);
+                const rotor = document.getElementById('oemRotor').value;
+                const pad = document.getElementById('oemPad').value;
+                detailsLines.push(`・強化項目：${checkedItems.length ? checkedItems.join('、') : '請專員推薦'}`);
+                detailsLines.push(`・碟盤樣式：${rotor}`);
+                detailsLines.push(`・來令片材質：${pad}`);
+            } else if (category === 'brake') {
+                serviceTitle = '❷ 高階 / 碳陶瓷煞車';
+                const brand = document.getElementById('brakeBrand').value;
+                const axle = document.getElementById('brakeAxle').value;
+                const rotor = document.getElementById('brakeRotor').value;
+                const pad = document.getElementById('brakePad').value;
+                detailsLines.push(`・品牌偏好：${brand}`);
+                detailsLines.push(`・安裝位置：${axle}`);
+                detailsLines.push(`・碟盤樣式：${rotor}`);
+                detailsLines.push(`・來令片材質：${pad}`);
+            } else if (category === 'exhaust') {
+                serviceTitle = '❸ 精品排氣系統';
+                const scope = document.getElementById('exhaustScope').value;
+                const bumper = document.getElementById('exhaustBumper').value;
+                detailsLines.push(`・排氣升級範圍：${scope}`);
+                detailsLines.push(`・後保桿/排氣狀態：${bumper}`);
+            } else if (category === 'aero') {
+                serviceTitle = '❹ 外觀空力套件';
+                const material = document.getElementById('aeroMaterial').value;
+                const parts = Array.from(document.querySelectorAll('input[name="aeroParts"]:checked')).map(el => {
+                    if (el.value === '其他') {
+                        const customPart = document.getElementById('aeroOtherCustom')?.value.trim();
+                        return customPart ? `其他（${customPart}）` : '其他';
+                    }
+                    return el.value;
+                });
+                detailsLines.push(`・材質偏好：${material}`);
+                detailsLines.push(`・欲改裝部位：${parts.length ? parts.join('、') : '全車空力評估'}`);
+            } else if (category === 'trading') {
+                serviceTitle = '❺ 買車 / 賣車與綜合服務';
+                const tType = document.getElementById('tradingType').value;
+                const tBrief = document.getElementById('tradingBrief').value.trim();
+                detailsLines.push(`・服務需求：${tType}`);
+                if (tBrief) detailsLines.push(`・需求簡述：${tBrief}`);
+            }
+
+            const formattedText = [
+                `【XQ PERFORMANCE 專屬升級諮詢】`,
+                `車款/年份：${year} ${make} ${model} (${body})`,
+                `升級需求：${serviceTitle}`,
+                ...detailsLines,
+                `補充說明：${notes}`
+            ].join('\n');
+
+            document.getElementById('generatedQuoteText').value = formattedText;
+            document.getElementById('copyBtnLabel').innerText = '一鍵複製諮詢內容';
+            document.getElementById('quoteModal').classList.remove('hidden');
+        }
+
+        // Copy to Clipboard via execCommand (Iframe safe)
+        function copyQuoteText() {
+            const textarea = document.getElementById('generatedQuoteText');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                const label = document.getElementById('copyBtnLabel');
+                label.innerText = '已複製！請點擊下方按鈕前往 LINE 貼上';
+                setTimeout(() => {
+                    label.innerText = '一鍵複製諮詢內容';
+                }, 3500);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('quoteModal').classList.add('hidden');
+        }
+
+        // Filterable Showcase Gallery
+        function filterGallery(filter, btnEl) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white', 'border-brand-red');
+                btn.classList.add('bg-brand-card', 'text-gray-300', 'border-brand-border');
+            });
+            btnEl.classList.remove('bg-brand-card', 'text-gray-300', 'border-brand-border');
+            btnEl.classList.add('bg-brand-red', 'text-white', 'border-brand-red');
+
+            document.querySelectorAll('.gallery-card').forEach(card => {
+                if (filter === 'all' || card.classList.contains(filter)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
